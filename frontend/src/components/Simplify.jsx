@@ -4,8 +4,6 @@ import "./Simplify.css"; // Import the corresponding CSS file
 const Simplify = () => {
   const [pdfFile, setPdfFile] = useState(null);
   const [numColors, setNumColors] = useState(""); // State for number of colors
-  const [budget, setBudget] = useState(""); // State for budget per item
-  const [groupName, setGroupName] = useState(""); // State for group name
 
   const handleFileChange = (event) => {
     const file = event.target.files?.[0];
@@ -17,19 +15,15 @@ const Simplify = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!numColors && (!budget || !groupName)) {
-      alert(
-        "Please select either the number of colors or both budget per item and group name."
-      );
+    if (!numColors || !pdfFile) {
+      alert("Please upload both an image and a number of colors");
       return;
     }
 
     // Handle form submission logic here (e.g., API call)
     console.log("Form submitted with values: ", {
       pdfFile,
-      numColors,
-      budget,
-      groupName,
+      numColors
     });
   };
 
@@ -67,32 +61,6 @@ const Simplify = () => {
                 min="0"
               />
             </div>
-
-            <div className="form-group">
-              <label htmlFor="budget">Budget per Shirt:</label>
-              <input
-                type="number"
-                id="budget"
-                value={budget}
-                onChange={(e) => setBudget(Number(e.target.value))}
-                min="0"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="groupName">Desired Design Website:</label>
-              <select
-                id="groupName"
-                value={groupName}
-                onChange={(e) => setGroupName(e.target.value)}
-              >
-                <option value="">None</option>
-                <option value="Custom Ink">Custom Ink</option>
-                <option value="RushOrderTees">RushOrderTees</option>
-                <option value="Printful">Printful</option>
-              </select>
-            </div>
-
             <button type="submit" className="simplify-button">
               Simplify
             </button>
