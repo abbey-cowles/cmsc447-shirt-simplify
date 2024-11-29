@@ -58,11 +58,13 @@
 }
 
 .faq h3 {
+    font-size: 1.2rem;
     margin: 10px 0 5px; /* Margin adjustments for questions */
     color: #ff5722; /* Matching the primary color for question headings */
 }
 
 .faq p {
+    font-size: 1.2rem;
     margin: 0 0 15px; /* Margin adjustments for answers */
     color: #555; /* Slightly lighter color for answers */
 }
