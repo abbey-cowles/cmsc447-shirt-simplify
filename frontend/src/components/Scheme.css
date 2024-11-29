@@ -77,3 +77,15 @@
   .back-to-sign-in-button:hover {
     background-color: #d6d6d6; /* Slightly darker shade */
   }
+
+  .home-link {
+    text-align: center; /* Center align the link */
+    margin-top: 25px; /* Space above the link */
+}
+
+.link {
+    font-size: 1.1rem; /* Font size for the link */
+    color: #985721; /* Primary color for the link */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Smooth color change */
+}

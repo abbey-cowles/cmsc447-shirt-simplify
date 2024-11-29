@@ -1,33 +1,44 @@
 import React, { useState } from "react";
+import Axios from "axios";
 import "./Scheme.css"; // Import the same CSS for styling
 
-const Feedback = () => {
+const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
 
-  const handleSubmit = (event) => {
-    e.preventDefault(); // Prevent the default form submission
-    console.log("Email:", email);
-    console.log("Password:", password);
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent default form submission
 
-    // Simulate a successful sign-in (replace this with actual authentication logic)
-    const isSuccess = true; // You can replace this with real authentication logic
+    Axios.post("http://localhost:8081/contact", {name: name, email: email, message: message })
+      .then((response) => { 
+        if (response.data.success) {
+          alert(response.data.message);
+          setEmail("");
+          setPassword("");
+          setMessage("");
+          window.location.href = "/";
+        }
+        else if (response.data.message){
+          alert(response.data.message);
+          setEmail("");
+          setPassword("");
+          setMessage("");
+        }
+      })
+      .catch((error) => {
+        console.error("Error sending feedback:", error);
+      });
 
-    if (isSuccess) {
-      // Redirect to the home page after successful sign-in
-      navigate("/"); // The path here is the home page route
-    }
-
-    setEmail("");
-    setPassword("");
+      setName("");
+      setEmail("");
+      setMessage("");
+      
   };
 
   return (
     <div className="sign-in-container">
       <h1>Contact Us</h1>
-      {successMessage && <p className="success-message">{successMessage}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
@@ -68,8 +79,13 @@ const Feedback = () => {
           Submit Message
         </button>
       </form>
+      <div className="home-link">
+          <a href="/" className="link">
+            Go Home
+          </a>
+        </div>
     </div>
   );
 };
 
-export default Feedback;
+export default Contact;
