@@ -5,7 +5,6 @@ import "./Scheme.css"; // Import CSS for styling
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [sign_status, setStatus] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission behavior
@@ -14,16 +13,12 @@ const Signup = () => {
     Axios.post("http://localhost:8081/signup", {email: email,password: password,})
       .then((response) => {
         if (response.data.message) {
-          // Display error message from server
-          setStatus(response.data.message);
           alert(response.data.message);
           setEmail("");
           setPassword("");
         } 
         else if (response.data.success) {
-          // Display success message
-          alert("User signed up successfully!");
-          setStatus("User signed up successfully!");
+          alert(response.data.message);
           setEmail("");
           setPassword("");
           window.location.href = "/"; // Redirect to sign-in page
@@ -33,7 +28,7 @@ const Signup = () => {
       })
       .catch((error) => {
         console.error("Error during sign-up:", error);
-        setStatus("An error occurred. Please try again.");
+        alert("An error occurred. Please try again.");
         setEmail("");
         setPassword("");
       });
