@@ -39,7 +39,7 @@ app.post('/signup', (req,res) => {
               return res.status(500).send({ message: "Error signing up" });
             }
     
-            res.status(201).send({ success: true });
+            res.status(200).json({ success: true, message: "User Signed up"});
           }
         );
     });
@@ -62,11 +62,23 @@ app.post('/signin', (req,res) => {
         const user = results[0];
     
         if (user.password === password) {
-          return res.status(200).send({message:"User can be logged in"});
+            res.status(200).json({success: true});
         } 
         else {
           return res.status(400).send({message: "Invalid email or password" });
         }
+    });
+});
+
+app.post("/contact", (req, res) => {
+    const { name, email, message } = req.body;
+
+    db.query("INSERT INTO contact (name, email, message) VALUES (?, ?, ?)", [name, email, message], (err, result) => {
+      if (err) {
+        console.error("Database error:", err);
+        return res.status(500).send({message:"Failed to send message"});
+      }
+      res.status(200).json({success: true, message: "Message Sent"});
     });
 });
 
