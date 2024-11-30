@@ -7,6 +7,7 @@ import Simplify from "./components/Simplify";
 import Help from "./components/Help";
 import Feedback from "./components/Contact";
 import Signup from "./components/Signup";
+import Output from "./components/Output";
 
 const App = () => {
   const navigate = useNavigate();
@@ -44,6 +45,7 @@ const App = () => {
         <Route path="/contact" element={<Feedback />} />
         <Route path="/help" element={<Help />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/output" element={<Output />} />
       </Routes>
 
       <footer className="footer">

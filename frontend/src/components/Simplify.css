@@ -63,8 +63,25 @@ input, select {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .simplify-button:hover {
     background-color: #e64a19; /* Darker shade on hover */
+}
+
+.home-link {
+    text-align: center; /* Center align the link */
+    margin-top: 300px; /* Space above the link */
+}
+
+.link {
+    font-size: 1.2rem; /* Font size for the link */
+    color: #ff5722; /* Primary color for the link */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Smooth color change */
+}
+
+.link:hover {
+    color: #e64a19; /* Darker shade on hover */
 }
