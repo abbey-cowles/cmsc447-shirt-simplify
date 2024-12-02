@@ -3,18 +3,15 @@ import "./Simplify.css"; // Import the same CSS file
 
 const Output = () => {
   const [image, setImage] = useState(null);
-  const [fileName, setFileName] = useState(""); // You can set the file name from the backend response
+  const [fileName, setFileName] = useState(""); 
 
   useEffect(() => {
-    // Simulating fetching the image from the backend after the processing
-    // This is where you would get the URL from the backend or the processed image directly
-    // Replace with your backend URL or data
     fetch("/api/processed-image")
       .then((response) => response.blob())
       .then((blob) => {
         const imageUrl = URL.createObjectURL(blob);
         setImage(imageUrl);
-        setFileName("processed-image.png"); // Set a default name or get it from backend
+        setFileName("processed-image.png");
       })
       .catch((error) => {
         console.error("Error fetching image:", error);
@@ -31,7 +28,6 @@ const Output = () => {
   };
 
   const handleSave = () => {
-    // Implement your save logic here. For example, saving the image to user's account.
     alert("Save feature is not implemented yet.");
   };
 

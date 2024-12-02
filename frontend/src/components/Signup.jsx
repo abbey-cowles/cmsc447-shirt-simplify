@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import "./Scheme.css"; // Import CSS for styling
+import "./Scheme.css";
+import { useUser } from "./UserContext";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setUser } = useUser();
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission behavior
@@ -21,6 +23,7 @@ const Signup = () => {
           alert(response.data.message);
           setEmail("");
           setPassword("");
+          setUser({ email: email });
           window.location.href = "/"; // Redirect to sign-in page
         }
         setEmail("");

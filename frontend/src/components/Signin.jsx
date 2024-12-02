@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import "./Scheme.css"; 
+import { useNavigate } from "react-router-dom";
+import { useUser } from "./UserContext";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setUser } = useUser();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission
 
-    Axios.post("http://localhost:8081/signin", {email: email,password: password,})
+    Axios.post("http://localhost:8081/signin", {email: email,password: password})
       .then((response) => {
         if (response.data.success) {
           alert("Welcome back!");
-          window.location.href = "/";
+          setUser({ email: email });
+          navigate("/");
         } 
         else if (response.data.message) {
           alert(response.data.message);

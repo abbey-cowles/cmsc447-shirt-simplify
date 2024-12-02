@@ -1,5 +1,6 @@
 import "./App.css";
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
+import { useUser } from "./components/UserContext";
 
 import Home from "./components/Home";
 import Signin from "./components/Signin";
@@ -11,6 +12,7 @@ import Output from "./components/Output";
 
 const App = () => {
   const navigate = useNavigate();
+  const { user, setUser } = useUser();
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -26,14 +28,20 @@ const App = () => {
           <img src="" className="logo" alt="Logo" />
           <h1 className="company-name">Shirt Simplify</h1>
         </div>
+        {user && (
+          <div className="user-info">
+            <p>Welcome, {user.email}!</p>
+          </div>
+        )}
         <div className="dropdown">
-          <button>Menu</button>
+          <button> Menu </button>
           <div className="dropdown-content">
             <a onClick={() => navigate("/")}>Home</a>
-            <a onClick={() => navigate("/signin")}>Sign In</a>
+            {!user && <a onClick={() => navigate("/signin")}>Sign In</a>}
             <a onClick={() => navigate("/simplify")}>Simplify</a>
             <a onClick={() => navigate("/contact")}>Contact Us</a>
             <a onClick={() => navigate("/help")}>Help</a>
+            {user && (<a onClick={() => {setUser(null);navigate("/");}}>Log Out</a>)}
           </div>
         </div>
       </header>
