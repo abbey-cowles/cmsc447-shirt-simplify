@@ -27,22 +27,34 @@ body {
   font-size: 2.5em;
 }
 
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  margin-left: 700px; /* Space between Welcome message and dropdown */
+  font-size: 1.0em;
+  color: black;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
 .dropdown button {
-  background-color: #af5a13; 
+  background-color: rgb(201, 102, 21); 
   color: white;
-  padding: 10px 20px;
+  padding: 15px 30px;
+  font-size: 1.2em;
   border: none;
   border-radius: 8px;
   cursor: pointer;
 }
 
 .dropdown button:hover {
-  background-color: #985721;
+  background-color: rgb(159, 81, 16);
 }
 
 .dropdown-content {
