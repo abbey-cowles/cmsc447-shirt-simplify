@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import "./Scheme.css"; // Import the same CSS for styling
+import "./Scheme.css";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission
@@ -34,6 +36,10 @@ const Contact = () => {
       setEmail("");
       setMessage("");
       
+  };
+
+  const handleGoHome = () => {
+    navigate("/");
   };
 
   return (
@@ -80,10 +86,10 @@ const Contact = () => {
         </button>
       </form>
       <div className="home-link">
-          <a href="/" className="link">
-            Go Home
-          </a>
-        </div>
+        <button className="link" onClick={handleGoHome}>
+          Go Home
+        </button>
+      </div>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 import "./Scheme.css";
 import { useUser } from "./UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -24,7 +25,7 @@ const Signup = () => {
           setEmail("");
           setPassword("");
           setUser({ email: email });
-          window.location.href = "/"; // Redirect to sign-in page
+          navigate("/"); // Redirect to sign-in page
         }
         setEmail("");
         setPassword("");
@@ -68,7 +69,7 @@ const Signup = () => {
       <div className="sign-in-redirect">
         <p>Already have an account?</p>
         <button
-          onClick={() => (window.location.href = "/signin")}
+          onClick={() => (navigate("/signin"))}
           className="back-to-sign-in-button"
         >
           Sign In

@@ -1,7 +1,14 @@
 import React from "react";
 import "./Help.css"; // Import the updated CSS file
+import { useNavigate } from "react-router-dom";
 
 const Help = () => {
+  const navigate = useNavigate();
+
+  const handleGoContact = () => {
+    navigate("/contact");
+  };
+
   return (
     <div className="container">
       <div className="content">
@@ -35,11 +42,11 @@ const Help = () => {
             a design, you will be able to save it to your account.
           </p>
         </div>
-        <div className="feedback-link">
-          <a href="/contact" className="link">
-            Contact Us
-          </a>
-        </div>
+        <div className="home-link">
+        <button className="link" onClick={handleGoContact}>
+          Contact
+        </button>
+      </div>
       </div>
     </div>
   );

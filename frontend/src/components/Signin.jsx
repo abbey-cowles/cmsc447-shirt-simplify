@@ -64,7 +64,7 @@ const Signin = () => {
       <div className="sign-up-redirect">
         <p>Don't have an account?</p>
         <button
-          onClick={() => (window.location.href = "/signup")}
+          onClick={() => (navigate("/signup"))}
           className="back-to-sign-in-button"
         >
           Sign Up
