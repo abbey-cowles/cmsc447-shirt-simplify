@@ -25,7 +25,7 @@ const App = () => {
     <div>
       <header className="header">
         <div className="logo-container">
-          <img src="" className="logo" alt="Logo" />
+          <img src="shirt_c.png" className="logo" alt="Logo" />
           <h1 className="company-name">Shirt Simplify</h1>
         </div>
         {user && (

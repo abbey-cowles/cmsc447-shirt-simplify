@@ -19,21 +19,29 @@ const Home = () => {
         </button>
       </section>
 
+      <div className="divider"></div>
+      
       <section className="features">
         <h2>Our Key Features</h2>
         <div className="features-container">
           <div className="feature-item">
-            <img src="https://via.placeholder.com/100" alt="Simplify" />
+            <div className="feature-icon">
+              <img src="https://via.placeholder.com/100" alt="Simplify" />
+            </div>
             <h3>Simplify</h3>
-            <p>Reduce colors of PDF/JPG/JPEG designs for cheaper printing.</p>
+            <p>Reduce colors in designs for cheaper printing.</p>
           </div>
           <div className="feature-item">
-            <img src="https://via.placeholder.com/100" alt="Compare" />
+            <div className="feature-icon">
+              <img src="https://via.placeholder.com/100" alt="Compare" />
+            </div>
             <h3>Compare</h3>
             <p>Find prices of design at different custom design sites.</p>
           </div>
           <div className="feature-item">
-            <img src="https://via.placeholder.com/100" alt="Share" />
+            <div className="feature-icon">
+              <img src="https://via.placeholder.com/100" alt="Share" />
+            </div>
             <h3>Share</h3>
             <p>Download, save, and send simplified images.</p>
           </div>

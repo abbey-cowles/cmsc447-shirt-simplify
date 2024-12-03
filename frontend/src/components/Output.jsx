@@ -1,31 +1,19 @@
-import React, { useState, useEffect } from "react";
-import "./Simplify.css"; // Import the same CSS file
+import React from "react";
+import { useLocation } from "react-router-dom";
+import "./Simplify.css";
 
 const Output = () => {
-  const [image, setImage] = useState(null);
-  const [fileName, setFileName] = useState(""); 
+    const location = useLocation();
+    const imageUrl = location.state?.imageUrl;
 
-  useEffect(() => {
-    fetch("/api/processed-image")
-      .then((response) => response.blob())
-      .then((blob) => {
-        const imageUrl = URL.createObjectURL(blob);
-        setImage(imageUrl);
-        setFileName("processed-image.png");
-      })
-      .catch((error) => {
-        console.error("Error fetching image:", error);
-      });
-  }, []);
-
-  const handleDownload = () => {
-    if (image) {
-      const link = document.createElement("a");
-      link.href = image;
-      link.download = fileName; // Use the fileName to specify the downloaded image name
-      link.click();
-    }
-  };
+    const handleDownload = () => {
+      if (imageUrl) {
+        const link = document.createElement("a");
+        link.href = imageUrl;
+        link.download = "processed-image.png";
+        link.click();
+      }
+    };
 
   const handleSave = () => {
     alert("Save feature is not implemented yet.");
@@ -35,12 +23,12 @@ const Output = () => {
     <div className="sim-container">
       <div className="form-layout">
         <div className="form-container">
-          <h1>Processed Image</h1>
-          {image ? (
-            <img src={image} alt="Processed Result" width="100%" height="auto" />
-          ) : (
-            <p>Loading image...</p>
-          )}
+        <h1>Processed Image</h1>
+            {imageUrl ? (
+                <img src={imageUrl} alt="Processed Result" width="100%" height="auto" />
+            ) : (
+                <p>No image found. Please try again.</p>
+            )}
         </div>
 
         <div className="grey-container">

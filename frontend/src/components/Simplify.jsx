@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import "./Simplify.css"; // Import the corresponding CSS file
+import { useNavigate } from "react-router-dom";
+import "./Simplify.css";
 import axios from "axios";
 
 const Simplify = () => {
     const [file, setFile] = useState(null);
-    const [numColors, setNumColors] = useState(5); // Default number of colors
-    const [modifiedImage, setModifiedImage] = useState(null); // For displaying the modified image
+    const [numColors, setNumColors] = useState(5);
+    const navigate = useNavigate();
 
     const handleFileChange = (event) => {
         const selectedFile = event.target.files?.[0];
@@ -24,15 +25,15 @@ const Simplify = () => {
 
         const formData = new FormData();
         formData.append("image", file);
-        formData.append("numColors", numColors); // Pass the number of colors to the backend
+        formData.append("numColors", numColors);
 
         try {
             const response = await axios.post("http://localhost:8081/upload", formData, {
-                responseType: "blob", // To handle binary data
+                responseType: "blob",
             });
 
             const modifiedImageURL = URL.createObjectURL(response.data);
-            setModifiedImage(modifiedImageURL);
+            navigate("/output", { state: { imageUrl: modifiedImageURL } });
         } catch (error) {
             console.error("Error processing image:", error);
             alert("Failed to process the image.");
@@ -79,13 +80,6 @@ const Simplify = () => {
                         </button>
                     </form>
                 </div>
-
-                {modifiedImage && (
-                    <div className="result-container">
-                        <h2>Modified Image</h2>
-                        <img src={modifiedImage} alt="Modified" width="100%" height="auto" />
-                    </div>
-                )}
             </div>
         </div>
     );
