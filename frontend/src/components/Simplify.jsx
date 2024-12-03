@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Simplify.css";
+import { useUser } from './UserContext';
 import axios from "axios";
 
 const Simplify = () => {
     const [file, setFile] = useState(null);
     const [numColors, setNumColors] = useState(5);
     const navigate = useNavigate();
+    const {user} = useUser();
 
     const handleFileChange = (event) => {
         const selectedFile = event.target.files?.[0];
@@ -33,7 +35,7 @@ const Simplify = () => {
             });
 
             const modifiedImageURL = URL.createObjectURL(response.data);
-            navigate("/output", { state: { imageUrl: modifiedImageURL } });
+            navigate("/output", { state: { imageUrl: modifiedImageURL, userEmail: user.email } });
         } catch (error) {
             console.error("Error processing image:", error);
             alert("Failed to process the image.");

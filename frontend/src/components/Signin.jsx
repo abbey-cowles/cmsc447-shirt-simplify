@@ -15,18 +15,20 @@ const Signin = () => {
 
     Axios.post("http://localhost:8081/signin", {email: email,password: password})
       .then((response) => {
-        if (response.data.success) {
+        if (response.data.message) {
+          alert(response.data.message);
+          setEmail("");
+          setPassword("");
+        }
+        else if (response.data.success) {
           alert("Welcome back!");
           setUser({ email: email });
           navigate("/");
         } 
-        else if (response.data.message) {
-          alert(response.data.message);
-        }
       })
       .catch((error) => {
         console.error("Sign-in error:", error);
-        alert("An error occurred. Please try again later.");
+        alert("Invalid email or password");
       });
 
     setEmail("");
@@ -64,7 +66,7 @@ const Signin = () => {
       <div className="sign-up-redirect">
         <p>Don't have an account?</p>
         <button
-          onClick={() => (window.location.href = "/signup")}
+          onClick={() => (navigate("/signup") )}
           className="back-to-sign-in-button"
         >
           Sign Up

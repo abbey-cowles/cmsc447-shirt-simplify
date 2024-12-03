@@ -9,6 +9,7 @@ import Help from "./components/Help";
 import Feedback from "./components/Contact";
 import Signup from "./components/Signup";
 import Output from "./components/Output";
+import UserProfile from "./components/UserProfile";
 
 const App = () => {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const App = () => {
             <a onClick={() => navigate("/simplify")}>Simplify</a>
             <a onClick={() => navigate("/contact")}>Contact Us</a>
             <a onClick={() => navigate("/help")}>Help</a>
+            {user && (<a onClick={() => {navigate("/profile");}}>Profile</a>)}
             {user && (<a onClick={() => {setUser(null);navigate("/");}}>Log Out</a>)}
           </div>
         </div>
@@ -54,6 +56,7 @@ const App = () => {
         <Route path="/help" element={<Help />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/output" element={<Output />} />
+        <Route path="/profile" element={<UserProfile user={user} />} />
       </Routes>
 
       <footer className="footer">

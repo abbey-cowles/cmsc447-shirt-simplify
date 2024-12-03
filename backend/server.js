@@ -105,9 +105,7 @@ app.post('/signup', (req,res) => {
         }
 
         db.query(
-          "INSERT INTO users (email, password) VALUES (?, ?)",
-          [email, password],
-          (err, result) => {
+          "INSERT INTO users (email, password) VALUES (?, ?)",[email, password],(err, result) => {
             if (err) {
               console.error("Error inserting user:", err);
               return res.status(500).send({ message: "Error signing up" });
@@ -130,7 +128,8 @@ app.post('/signin', (req,res) => {
         }
     
         if (results.length === 0) {
-          return res.status(400).send({message: "Invalid email or password" });
+          console.log("invalid");
+          return res.status(400).json({message: "Invalid email or password" });
         }
     
         const user = results[0];
@@ -139,7 +138,7 @@ app.post('/signin', (req,res) => {
             res.status(200).json({success: true});
         } 
         else {
-          return res.status(400).send({message: "Invalid email or password" });
+          return res.status(400).json({message: "Invalid email or password" });
         }
     });
 });
@@ -154,6 +153,40 @@ app.post("/contact", (req, res) => {
       }
       res.status(200).json({success: true, message: "Message Sent"});
     });
+});
+
+app.post('/saved', (req, res) => {
+  const { email, image } = req.body;
+
+  console.log("email:", email);
+  if (!email || !image) {
+    return res.status(400).send({ message: "Email and image URL are required" });
+  }
+
+  db.query(
+    "INSERT INTO saved (email, image) VALUES (?, ?)",[email, image],(err, result) => {
+      if (err) {
+        console.error("Error saving image:", err);
+        return res.status(500).send({ message: "Failed to save image" });
+      }
+
+      res.status(200).json({ success: true, message: "Image saved successfully" });
+    }
+  );
+});
+
+app.post("/get-saved", (req, res) => {
+  const email = req.body.email;
+
+  // Query the database to get all saved images for the given email
+  db.query("SELECT * FROM saved WHERE email = ?",[email],(err, results) => {
+      if (err) {
+        console.error("Database error:", err);
+        return res.status(500).json({ message: "Failed to fetch saved images" });
+      }
+      res.status(200).json({ images: results });
+    }
+  );
 });
 
 app.listen(8081, () => {

@@ -1,49 +1,73 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import "./Simplify.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useUser } from "./UserContext";
+import Axios from "axios";
+import "./Output.css";
 
 const Output = () => {
-    const location = useLocation();
-    const imageUrl = location.state?.imageUrl;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const imageUrl = location.state?.imageUrl;
+  const { user } = useUser();
+  const userEmail = user?.email || "Guest";
 
-    const handleDownload = () => {
-      if (imageUrl) {
-        const link = document.createElement("a");
-        link.href = imageUrl;
-        link.download = "processed-image.png";
-        link.click();
-      }
-    };
+  const handleDownload = () => {
+    if (imageUrl) {
+      const link = document.createElement("a");
+      link.href = imageUrl;
+      link.download = "processed-image.png";
+      link.click();
+    }
+  };
 
   const handleSave = () => {
-    alert("Save feature is not implemented yet.");
+    if (userEmail !== "Guest") {
+      Axios.post("http://localhost:8081/saved", { email: userEmail, image: imageUrl })
+        .then((response) => {
+          if (response.data.success) {
+            alert("Image saved successfully!");
+          } else {
+            alert(response.data.message);
+          }
+        })
+        .catch((error) => {
+          console.error("Error saving image:", error);
+          alert("Failed to save image.");
+        });
+    } else {
+      alert("Please log in to save images.");
+    }
+  };
+
+  const handleGoHome = () => {
+    navigate('/');
   };
 
   return (
-    <div className="sim-container">
-      <div className="form-layout">
-        <div className="form-container">
-        <h1>Processed Image</h1>
-            {imageUrl ? (
-                <img src={imageUrl} alt="Processed Result" width="100%" height="auto" />
-            ) : (
-                <p>No image found. Please try again.</p>
-            )}
-        </div>
+    <div className="output-container">
+      <div className="image-section">
+        <h1 className="section-title">Processed Image</h1>
+        {imageUrl ? (
+          <img src={imageUrl} alt="Processed Result" className="output-image" />
+        ) : (
+          <p className="no-image-message">No image found. Please try again.</p>
+        )}
+      </div>
 
-        <div className="grey-container">
-          <h1>Actions</h1>
-          <button className="simplify-button" onClick={handleDownload}>
+      <div className="action-section">
+        <h2 className="section-title">Actions</h2>
+        <div className="action-buttons">
+          <button className="action-button" onClick={handleDownload}>
             Download Image
           </button>
-          <button className="simplify-button" onClick={handleSave}>
+          <button className="action-button" onClick={handleSave}>
             Save Image
           </button>
-          <div className="home-link">
-          <a href="/" className="link">
-            Go Home
-          </a>
         </div>
+        <div className="go-home-link">
+          <button className="link-button" onClick={handleGoHome}>
+            Go Home
+          </button>
         </div>
       </div>
     </div>
