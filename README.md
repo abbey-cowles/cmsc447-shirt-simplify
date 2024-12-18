@@ -1,11 +1,14 @@
 Group 8: Shirt Simplify
 
+
 In the custom t-shirt printing industry, a large challenge for customers is balancing the cost of printing with design. The more colors a design has, 
 the higher the production costs. At times, users may have to sacrifice their images, choosing less creative and appealing images, as they are too costly 
 to produce. Shirt Simplify aims to tackle these stuggles by accepting shirt designs and reducing the number of colors in the design so that the printing
 cost is cheaper. The users are able to download their modified design and input it into any custom shirt website.
 
+
 This is a React App + Vite. All dependencies must be installed in order to successfully host the app.
+
 
 The frontend is hosted locally, typically on port 5173. 
 
@@ -14,6 +17,7 @@ The frontend is hosted locally, typically on port 5173.
     cd frontend
     
     npm run dev
+
     
 The backend is hosted locally as well, on port 8081. MySQL must be connected (we used VSCode so we were able to link the database directly on there) to 
 a database named 'shirt_simplify'. This database contains 3 tables -> 'contact' (name,email,message), 'saved' (email, image), and 'users' 
@@ -24,6 +28,7 @@ a database named 'shirt_simplify'. This database contains 3 tables -> 'contact' 
     cd backend
     
     npm start
+    
 
 The following is a list of pages within the app that a user may navigate to. Each page will have a description, as well as requirements to use them. Note
 that a user may always navigate around the app using the 'Menu' on the header which is always present.
@@ -55,23 +60,31 @@ that a user may always navigate around the app using the 'Menu' on the header wh
 
 Work done on Project:
 
-  Coding:
-    - Frontend: Abbey Cowles
-    - Backend:
-      - Reduction Algorithm (and calls related to it): Wes Van Erp
-      - Everything else: Abbey Cowles
+Coding:
+  - Frontend: Abbey Cowles
+    
+  - Backend:
+    
+    - Reduction Algorithm (and calls related to it): Wes Van Erp
       
-  Presentations:
-    - Proposal Presentation: Abbey Cowles
-    - Midterm Presentation: Abbey Cowles and Wes Van Erp
-    - Final Presentation: Abbey Cowles and Wes Van Erp
+    - Everything else: Abbey Cowles
+      
+Presentations:
+  - Proposal Presentation: Abbey Cowles
     
-  Writing:
-    - Sprint Report Write Ups: Wes Van Erp
-    - UI Doc: Abbey Cowles
-    - Testing Doc & SRS Doc: Wes Van Erp
-    - SRS Doc & SDD Doc: Alec Trotman
+  - Midterm Presentation: Abbey Cowles and Wes Van Erp
     
-  - General Testing: Abbey Cowles and Wes Van Erp
+  - Final Presentation: Abbey Cowles and Wes Van Erp
+    
+Writing:
+  - Sprint Report Write Ups: Wes Van Erp
+    
+  - UI Doc: Abbey Cowles
+    
+  - Testing Doc & SRS Doc: Wes Van Erp
+    
+  - SRS Doc & SDD Doc: Alec Trotman
+    
+General Testing: Abbey Cowles and Wes Van Erp
   
-  - Jira Board Updating: Abbey Cowles and Wes Van Erp
+Jira Board Updating: Abbey Cowles and Wes Van Erp
