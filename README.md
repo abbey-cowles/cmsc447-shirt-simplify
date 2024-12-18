@@ -60,14 +60,18 @@ Work done on Project:
     - Backend:
       - Reduction Algorithm (and calls related to it): Wes Van Erp
       - Everything else: Abbey Cowles
+      
   Presentations:
     - Proposal Presentation: Abbey Cowles
     - Midterm Presentation: Abbey Cowles and Wes Van Erp
     - Final Presentation: Abbey Cowles and Wes Van Erp
+    
   Writing:
     - Sprint Report Write Ups: Wes Van Erp
     - UI Doc: Abbey Cowles
     - Testing Doc & SRS Doc: Wes Van Erp
     - SRS Doc & SDD Doc: Alec Trotman
+    
   - General Testing: Abbey Cowles and Wes Van Erp
+  
   - Jira Board Updating: Abbey Cowles and Wes Van Erp
