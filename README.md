@@ -10,7 +10,9 @@ This is a React App + Vite. All dependencies must be installed in order to succe
 The frontend is hosted locally, typically on port 5173. 
 
   - to start the frontend:
+
     cd frontend
+    
     npm run dev
     
 The backend is hosted locally as well, on port 8081. MySQL must be connected (we used VSCode so we were able to link the database directly on there) to 
@@ -18,7 +20,9 @@ a database named 'shirt_simplify'. This database contains 3 tables -> 'contact' 
 (email,password).
 
   - to start backend:
+    
     cd backend
+    
     npm start
 
 The following is a list of pages within the app that a user may navigate to. Each page will have a description, as well as requirements to use them. Note
