@@ -55,13 +55,19 @@ that a user may always navigate around the app using the 'Menu' on the header wh
 
 Work done on Project:
 
-  - Frontend: Abbey Cowles
-  - Backend:
+  Coding:
+    - Frontend: Abbey Cowles
+    - Backend:
       - Reduction Algorithm (and calls related to it): Wes Van Erp
       - Everything else: Abbey Cowles
-  - Testing: Abbey Cowles and Wes Van Erp
-  - Sprint Report Write Ups: Wes Van Erp
-  - Proposal Presentation: Abbey Cowles
-  - Midterm Presentation: Abbey Cowles and Wes Van Erp
-  - Final Presentation: Abbey Cowles and Wes Van Erp
+  Presentations:
+    - Proposal Presentation: Abbey Cowles
+    - Midterm Presentation: Abbey Cowles and Wes Van Erp
+    - Final Presentation: Abbey Cowles and Wes Van Erp
+  Writing:
+    - Sprint Report Write Ups: Wes Van Erp
+    - UI Doc: Abbey Cowles
+    - Testing Doc & SRS Doc: Wes Van Erp
+    - SRS Doc & SDD Doc: Alec Trotman
+  - General Testing: Abbey Cowles and Wes Van Erp
   - Jira Board Updating: Abbey Cowles and Wes Van Erp
